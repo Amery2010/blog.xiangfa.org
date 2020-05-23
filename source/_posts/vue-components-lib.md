@@ -83,14 +83,6 @@ Vant 这个库组件种类还是很丰富的，但..我接到的需求却是开�
 
 那我就从 vue-cli 的源码里开始找吧...
 
-.
-
-.
-
-.
-
-.
-
 经过漫长的查找定位...终于找到了我需要的打包 lib 的[源码](https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-service/lib/commands/build/index.js)：
 
 ```
@@ -207,5 +199,3 @@ scripts.forEach(config => {
 ```
 
 至此，通过“曲线救国”的方式，我顺利的完成了 vue 组件库开发的任务。
-
-组件库地址：https://gitlab.jiliguala.com/npm/vcomp
