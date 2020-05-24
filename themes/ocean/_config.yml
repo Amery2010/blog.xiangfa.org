@@ -29,8 +29,8 @@ gitalk:
   clientID: '00602273bcb44baec0a4'     # 申请 GitHub Application 网页上对应的 Client ID 与 Client Secret 参数
   clientSecret: '532c033a72eb4b94cf1e9aebdb0a9857fdedfe80'     # 同上
   repo: 'xiangfa.org'     # 创建的仓库名称
-  owner: 'Amery2010'      # Github ID
-  admin: 'Amery2010'     # Github ID
+  owner: 'amery2010'      # Github ID
+  admin: ['amery2010']     # Github ID
 
 # Valine
 valine:
