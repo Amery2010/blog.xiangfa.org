@@ -3,13 +3,14 @@ title: React Hooks 时代的状态管理库的选择
 author: 子丶言
 date: 2020-05-26 18:06:00
 tags: ['React', 'React Hooks', '状态管理', 'Mobx', 'Redux']
+categories: 
+  - React
 ---
-
-## 引言
 
 React 的数据流是自上而下的，从组件外到组件内，从父组件到子组件，且传递下来的 props 是只读的，如果你想更改 props，只能父组件传入一个封装好的 setState 方法。虽然你可以通过一些方案来解决 React 组件间的通信问题，但随着项目业务的增长，组件通信的成本会越来越高！这时候你可能希望有一处专门负责数据状态管理的地方，而这就是我们今天要提到的数据状态管理库的概念。
 
 在 React 项目中常用的数据状态管理主要有 Redux 和 Mobx。而在早期，React 引入 Redux 需要使用大量的“胶水代码”，且遵循 setState 原则。而 Mobx 主张干掉 setState 的机制，它简化了使用成本，但确增加了“依赖收集”的新概念。这两个状态管理库各有优劣，多年相争不下。
+<!-- more --> 
 
 ## React Hooks 时代
 

@@ -3,13 +3,14 @@ title: Electron 学习笔记 - TypeScript 的使用
 author: 子丶言
 date: 2020-06-01 17:21:00
 tags: ['Electron', 'Electron 学习笔记', '跨平台', '桌面应用']
+categories: 
+  - Electron 学习笔记
 ---
-
-## 引言
 
 Electron（原名为Atom Shell）是 GitHub 开发的一个开源框架。它允许使用 Node.js（作为后端）和 Chromium（作为前端）完成桌面GUI应用程序的开发。Electron 现已被多个开源 Web 应用程序用于前端与后端的开发，著名项目包括 GitHub 的 Atom 和微软的 Visual Studio Code。
 
 Electron 使用 JavaScript 作为基础编程语言，你实际上是在 Chromium 中编写前端代码，在 Node.js 中编写后端代码。随着时代的发展，TypeScript 越来越受到前端开发人员的欢迎，源于 TypeScript 是 JavaScript 的严格超集，不仅包含 JavaScript 的语法，而且还提供了静态类型检查。
+<!-- more --> 
 
 ## 在项目中使用 TypeScript
 
