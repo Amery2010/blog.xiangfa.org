@@ -14,7 +14,7 @@ React 的数据流是自上而下的，从组件外到组件内，从父组件�
 
 ## React Hooks 时代
 
-在进入到 React Hooks 时代，Mobx 率先推出了 [Mobx-react-lite](https://mobx-react.js.org/)，让隔壁的 Redux，完全没来得及反应。随着 React Hooks 日渐增长，Redux 也在后来推出了 [React Redux Hooks](https://react-redux.js.org/api/hooks)。<del>大航海时代，由此开启！</del> React Hooks 时代的状态管理之争,由此进入白热化状态。
+在进入到 React Hooks 时代，Mobx 率先推出了 [Mobx-react-lite](https://mobx-react.js.org/)，让隔壁的 Redux，完全没来得及反应。随着 React Hooks 日渐增长，Redux 也在后来推出了 [React Redux Hooks](https://react-redux.js.org/api/hooks)。~~开启了大航海时代！~~ React Hooks 时代的状态管理之争,由此进入白热化状态。
 
 我将使用 React Hooks 的 useContext 和 useReducer 实现简易的 TodoList，并使用 React Redux Hooks 和 Mobx-react-lite 实现相同的功能。
 
