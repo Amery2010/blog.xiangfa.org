@@ -2,6 +2,10 @@
 title: 旅行记录
 date: 2020-05-22 18:45:15
 albums: [
+  ['http://cdn.xiangfa.org/gallery/WechatIMG221.jpeg', '江西-武功山徒步'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG224.jpeg', '江西-武功山徒步'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG222.jpeg', '江西-武功山徒步'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG223.jpeg', '江西-武功山徒步'],
   ['http://cdn.xiangfa.org/gallery/2019-10-08%20120353.jpg', '新疆-乌孙古道徒步'],
   ['http://cdn.xiangfa.org/gallery/2019-10-07%20163135.jpg', '新疆-乌孙古道徒步'],
   ['http://cdn.xiangfa.org/gallery/2019-10-07%20105641.jpg', '新疆-乌孙古道徒步'],
