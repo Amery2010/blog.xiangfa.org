@@ -2,6 +2,21 @@
 title: 旅行记录
 date: 2020-05-22 18:45:15
 albums: [
+  ['http://cdn.xiangfa.org/gallery/WechatIMG239.jpeg', '青海湖-门源'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG238.jpeg', '青海湖-门源'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG237.jpeg', '甘肃-张掖-五色丹霞'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG236.jpeg', '甘肃-嘉峪关'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG235.jpeg', '敦煌-鸣沙山-银河'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG234.jpeg', '敦煌-鸣沙山'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG233.jpeg', '西北-水上雅丹'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG232.jpeg', '西北-波浪公路'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG231.jpeg', '西北-东台吉乃尔湖'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG230.jpeg', '西北-翡翠湖-天空之镜'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG229.jpeg', '西北-翡翠湖'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG228.jpeg', '西北-翡翠湖'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG227.jpeg', '西北-大柴旦'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG226.jpeg', '西宁-塔尔寺'],
+  ['http://cdn.xiangfa.org/gallery/WechatIMG225.jpeg', '西宁-塔尔寺'],
   ['http://cdn.xiangfa.org/gallery/WechatIMG221.jpeg', '江西-武功山徒步'],
   ['http://cdn.xiangfa.org/gallery/WechatIMG224.jpeg', '江西-武功山徒步'],
   ['http://cdn.xiangfa.org/gallery/WechatIMG222.jpeg', '江西-武功山徒步'],
