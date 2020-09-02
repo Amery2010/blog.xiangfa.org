@@ -95,6 +95,23 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: ocean
 
+# Plugin Live2d
+live2d:
+  model:
+    use: live2d-widget-model-tororo
+  display:
+    superSample: 2
+    width: 180
+    height: 360
+    position: left
+    hOffset: 20
+    vOffset: -60
+  mobile:
+    show: false
+  react:
+    opacityDefault: 0.7
+    opacityOnHover: 0.2
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
