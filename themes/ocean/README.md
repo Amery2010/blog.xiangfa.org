@@ -198,3 +198,16 @@ Use Tocbot to parse the title tags (h1~h6) in the content and insert the directo
 	```
 
 ---
+
+## Mathjax
+
+Let hexo support LaTeX formulas.
+
++ ocean/_config.yml
+
+  ```bash
+  # Mathjax
+  mathjax:
+  enable: true
+  cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  ```

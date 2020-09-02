@@ -45,6 +45,10 @@
         <%- partial('post/nav') %>
     <% } %>
 
+    <% if (theme.mathjax){ %>
+        <%- partial('mathjax') %>
+    <% } %>
+
     <% if (is_post()) { %>
         <%- partial('post/valine') %>
         <%- partial('post/gitalk') %>
