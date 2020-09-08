@@ -3,8 +3,7 @@ title: Vue 组件库构建流程
 author: 子丶言
 date: 2020-05-25 18:45:15
 tags: ['Vue 组件库', 'Vue', '组件库']
-categories: 
-  - Vue
+categories: ['Vue']
 ---
 
 ```

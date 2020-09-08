@@ -3,8 +3,7 @@ title: Electron 学习笔记 - 使用 Bridge 通信模式解耦 Electron 逻辑
 author: 子丶言
 date: 2020-06-04 18:26:22
 tags: ['Electron', 'Electron 学习笔记', '跨平台', '桌面应用', 'Bridge 通信']
-categories:
-  - Electron 学习笔记
+categories: ['Electron 学习笔记']
 ---
 
 虽然官方允许你直接在前端业务代码中直接使用 Electron 甚至直接引用 Node.js 依赖，但这种方式却对业务无意间侵入了前端业务代码。当项目加载远端业务页面以及业务代码由其他项目打包工具生成的情况下，你可能无法对前端业务代码做修改。如果引入 Native 与 HTML 页面的 Bridge 通信模式，这两类问题将迎刃而解。

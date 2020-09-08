@@ -3,8 +3,7 @@ title: 给你的 npm 提提速——优化国内 npm 下载速度
 author: 子丶言
 date: 2020-07-10 11:10:18
 tags: ['npm', 'yarn', 'Node.js']
-categories:
-  - npm
+categories: ['npm']
 ---
 
 在国内大环境的背景下，一些外国网站的访问速度经常会遇到加载慢的情况。这对于前端开发人员而言，最难接受的就是 npm 包下载过慢的问题。你想想呐，一个程序员很开心的写着代码，喝着快乐水，却在下载 npm 依赖时频繁遭遇 `Network Error` 或 `Network Timeout`。你那时还有心情写代码么？为了解决广大同僚的工作问题，我有一法可解。

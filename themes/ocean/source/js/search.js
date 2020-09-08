@@ -38,11 +38,9 @@ var searchFunc = function (path, search_id, content_id) {
       // 基于 GitHub 用户 DrebinPeng 的修改
       var _div = document.createElement('div') // 此处修改
       var datas = $("entry", xmlResponse).map(function () {
-        // 解决search.xml中的中文被转码为HTML实体的问题,即出现<p>&#x56E0;&#x6B64;&#x4E0A;</p>这样的问题
-        _div.innerHTML = $("content", this).text() // 此处修改
         return {
           title: $("title", this).text(),
-          content: _div.innerHTML, // 此处修改
+          content: $("content", this).text(),
           url: $("url", this).text()
         };
       }).get();

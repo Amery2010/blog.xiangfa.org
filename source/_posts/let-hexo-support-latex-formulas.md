@@ -3,8 +3,7 @@ title: 让 Hexo 支持 LaTeX 公式
 author: 子丶言
 date: 2020-09-02 20:11:42
 tags: ['Hexo', 'LaTex']
-categories:
-  - Hexo
+categories: ['Hexo']
 ---
 
 通常情况下，你并不会去使用 LaTex 公式，但当你文章涉及数学公式时，你往往会在第一时间想到 $ LaTex $ 公式。网上有比较多的文章告诉你如何在 Hexo 里使用 $ LaTex $ 公式，但大部分都是推荐使用 `hexo-math` 插件来实现，但 `hexo-math` 的兼容性并不好，并且和 Hexo 内置的 MarkDown 渲染引擎存在冲突。因此我推荐使用另一种实现方案：通过增加 Hexo 主题脚本片段的方式实现 $ LaTex $ 语法高亮。

@@ -3,8 +3,7 @@ title: 优化 vue 项目包大小对比实验结果
 author: 子丶言
 date: 2020-07-15 11:48:06
 tags: ['vue', 'vue-cli', 'webpack', '项目优化']
-categories:
-  - Vue
+categories: ['Vue']
 ---
 
 之前我有写过一篇[优化 vue 项目包大小，提升首屏加载速度](/2020/06/optimize-package-size-of-vue-project/)的文章，文章中写了一些有关 vue 项目包大小优化的方案，这篇文章则是优化效果的对比实验结果。总的来说，在资源数量提升的情况下，页面加载速度反而有了 10~17% 的提升，这种结果既意外又欣喜，有一种“不明觉厉”的感觉...

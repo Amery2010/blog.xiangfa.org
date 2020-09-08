@@ -18,7 +18,7 @@ ocean:
   brand: /images/logo.svg      # 可选，一个小 Logo
 
 # 内容
-excerpt_link: 阅读全文...
+excerpt_link: '阅读全文...'
 excerpt_all: false
 
 # fancybox
@@ -26,6 +26,10 @@ fancybox: true
 
 # Toc
 toc: true
+
+# Search
+search:
+  placeholder: '请输入关键字...'
 
 mathjax:
   enable: true

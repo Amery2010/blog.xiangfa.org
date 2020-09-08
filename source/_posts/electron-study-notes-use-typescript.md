@@ -3,8 +3,7 @@ title: Electron 学习笔记 - TypeScript 的使用
 author: 子丶言
 date: 2020-06-01 17:21:00
 tags: ['Electron', 'Electron 学习笔记', '跨平台', '桌面应用']
-categories: 
-  - Electron 学习笔记
+categories: ['Electron 学习笔记']
 ---
 
 Electron（原名为Atom Shell）是 GitHub 开发的一个开源框架。它允许使用 Node.js（作为后端）和 Chromium（作为前端）完成桌面GUI应用程序的开发。Electron 现已被多个开源 Web 应用程序用于前端与后端的开发，著名项目包括 GitHub 的 Atom 和微软的 Visual Studio Code。
