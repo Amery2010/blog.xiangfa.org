@@ -2,6 +2,7 @@
 title: 让 Hexo 支持 LaTeX 公式
 author: 子丶言
 date: 2020-09-02 20:11:42
+mathjax: true
 tags: ['Hexo', 'LaTex']
 categories: ['Hexo']
 ---

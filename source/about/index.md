@@ -1,6 +1,7 @@
 ---
 title: 关于我
 date: 2020-05-22 18:46:02
+ignoreCopyright: true
 ---
 
 一只会炼金术的吟游诗人...

@@ -1,6 +1,7 @@
 ---
 title: 旅行记录
 date: 2020-05-22 18:45:15
+ignoreCopyright: true
 albums: [
   ['http://cdn.xiangfa.org/gallery/WechatIMG242.jpeg', '常熟-虞山森林公园'],
   ['http://cdn.xiangfa.org/gallery/WechatIMG239.jpeg', '青海湖-门源'],
