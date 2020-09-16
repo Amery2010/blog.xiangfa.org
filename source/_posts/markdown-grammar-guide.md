@@ -470,7 +470,7 @@ Markdown 制作表格使用 `|` 来分隔不同的单元格，使用**一个以�
 
 实例如下：
 
-    ```Javascript
+    ```JavaScript
     function say(text) {
       alert(text)
     }
@@ -479,7 +479,7 @@ Markdown 制作表格使用 `|` 来分隔不同的单元格，使用**一个以�
 
 效果如下：
 
-```Javascript
+```JavaScript
 function say(text) {
   alert(text)
 }
@@ -531,7 +531,7 @@ Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的�
 
 ### 其他
 
-不同的 Markdown 编辑器对 Markdown 的语法支持程度也不同，部分 Markdown 编辑器通过插件的方式可以支持**公式**、**流程图**、**时序图**、**甘特图**等进阶语法。这些语法并不属于 Markdown 的基础语法因此这里也不再展开叙述，你可以根据实际情况进行对应语法的学习。
+不同的 Markdown 编辑器对 Markdown 的语法支持程度也不同，部分 Markdown 编辑器通过插件的方式可以支持**公式**、**流程图**、**时序图**、**甘特图**等进阶语法。这些语法并不属于 Markdown 的基础语法，因此这里也不再展开叙述，你可以根据实际情况选择性的学习。
 
 
 ## 参考

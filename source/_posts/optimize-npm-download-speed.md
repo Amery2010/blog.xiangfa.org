@@ -1,5 +1,5 @@
 ---
-title: 给你的 npm 提提速——优化国内 npm 下载速度
+title: 给你的 npm 提提速 — 优化国内 npm 下载速度
 author: 子丶言
 date: 2020-07-10 11:10:18
 tags: ['npm', 'yarn', 'Node.js']
