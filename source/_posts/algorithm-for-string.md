@@ -35,8 +35,8 @@ categories: ['算法学习笔记']
 ```js
 /**
  * 翻转整数
- * @param {Number} num 需要翻转的整数
- * @return {Number} 翻转后的整数
+ * @param {number} num 需要翻转的整数
+ * @return {number} 翻转后的整数
  */
 function reverseInteger(num) {
   // 异常值处理
@@ -68,8 +68,8 @@ function reverseInteger(num) {
 ```js
 /**
  * 翻转整数
- * @param {Number} num 需要翻转的整数
- * @return {Number} 翻转后的整数
+ * @param {number} num 需要翻转的整数
+ * @return {number} 翻转后的整数
  */
 function reverseInteger(num) {
   // 异常值处理
@@ -120,9 +120,9 @@ function reverseInteger(num) {
 ```js
 /**
  * 判断是否为有效的字母异位词
- * @param {String} source 当前字符串
- * @param {String} target 目标字符串
- * @return {Boolean} 排序后的字符串
+ * @param {string} source 当前字符串
+ * @param {string} target 目标字符串
+ * @return {boolean} 排序后的字符串
  */
 function isAnagram(source, target) {
   if (typeof source !== 'string' || typeof target !== 'string') {
@@ -130,8 +130,8 @@ function isAnagram(source, target) {
   }
   /**
    * 字符串排序
-   * @param {String} str 需要排序的字符串
-   * @return {String} 排序后的字符串
+   * @param {string} str 需要排序的字符串
+   * @return {string} 排序后的字符串
    */
   const sortString = str => {
     return str.split('').sort().join('')
@@ -147,3 +147,115 @@ function isAnagram(source, target) {
 
 - 空间复杂度：$ O(n) $
   算法中申请了 2 个数组变量用于存放字符串分割后的字符串数组，所以数组空间长度跟字符串长度线性相关，所以为 $ O(n) $。
+
+
+### 解法二：计数累加法
+
+思路：先统计第一个字符串的字符类型和出现次数，然后对另一个字符串进行对比统计，如果字符类型不一致或者出现次数不同，则表示两个字符串不相等。
+
+```js
+/**
+ * 判断是否为有效的字母异位词
+ * @param {string} source 当前字符串
+ * @param {string} target 目标字符串
+ * @return {boolean} 排序后的字符串
+ */
+function isAnagram(source, target) {
+  if (typeof source !== 'string' || typeof target !== 'string') {
+    return false
+  }
+  if (source.length !== target.length) {
+    return false
+  }
+  const hash = Object.create(null)
+  for (const k of source) {
+    hash[k] = k in hash ? hash[k] + 1 : 1
+  }
+  for (const k of target) {
+    if (!(k in hash)) return false
+    hash[k] -= 1
+  }
+  return true
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  当前算法只使用了两次单循环，因此时间复杂度为 $ O(n) $。
+
+- 空间复杂度：$ O(1) $
+  当前算法只使用 `hash` 和 `k` 两个变量，空间大小不随字符串的变量而变化。
+
+
+## 字符串中的第一个唯一字符
+
+> 给定一个字符串，假定该字符串只包含小写字母，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+
+    s = "leetcode"
+    返回 0.
+
+    s = "loveleetcode",
+    返回 2.
+
+### 解法一：利用 js 自带方法求解
+
+思路：如果字符串某个字符的正向索引值和反向索引值相同，则表示该字符只出现了一次。
+
+```js
+/**
+ * 获取字符串中的第一个唯一字符
+ * @param {string} str 目标字符串
+ * @return {number} 唯一字符的索引值，如果不存在，则返回 -1。
+ */
+function firstUniqChar(str) {
+  if (typeof str !== 'string') return -1
+  for (let i = 0; i < str.length; i += 1) {
+    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
+      return i
+    }
+  }
+  return -1
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n^2) $
+  循环的时间复杂度为 $ O(n) $，`indexOf` 与 `lastIndexOf` 的时间复杂度均为 $ O(n) $，所以总时间复杂度应该为 $ O(n^2) $。
+
+- 空间复杂度：$ O(1) $
+  除了临时变量 `i`，没有开辟额外的存储空间。
+
+### 解法二：利用哈希
+
+思路：先使用一个对象存储所有的字符出现次数，再找出对象中字符只出现一次的下标。
+
+```js
+/**
+ * 获取字符串中的第一个唯一字符
+ * @param {string} str 目标字符串
+ * @return {number} 唯一字符的索引值，如果不存在，则返回 -1。
+ */
+function firstUniqChar(str) {
+  if (typeof str !== 'string') return -1
+  const hash = Object.create(null)
+  for (const k of str) {
+    hash[k] = k in hash ? hash[k] + 1 : 1
+  }
+  for (let i = 0; i < str.length; i += 1) {
+    if (hash[str[i]] === 1) {
+      return i
+    }
+  }
+  return -1
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法存在两次遍历，每次遍历的时间复杂度为 $ O(n) $，因为不存在嵌套遍历，因此时间复杂度只与变量 `str` 有关。
+
+- 空间复杂度：$ O(1) $
+  当前算法只使用 `hash`、`k` 和 `i` 三个变量，空间大小不随字符串的变量而变化。
