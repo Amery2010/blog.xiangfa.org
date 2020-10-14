@@ -259,3 +259,83 @@ function firstUniqChar(str) {
 
 - 空间复杂度：$ O(1) $
   当前算法只使用 `hash`、`k` 和 `i` 三个变量，空间大小不随字符串的变量而变化。
+
+
+## 验证回文串
+
+> 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。本题中，我们将空字符串定义为有效的回文串。
+
+    示例 1:
+    输入: "A man, a plan, a canal: Panama"
+    输出: true
+
+    示例 2:
+    输入: "race a car"
+    输出: false
+
+### 解法一：字符串遍历
+
+思路：先移除字符串中的非字母和数字，再将字符串转换为数组，再对数组首尾一一比较，即可得出结果。
+
+```js
+/**
+ * 验证回文串
+ * @param {string} str 需要判断的字符串
+ * @return {boolean} 是否为回文串
+ */
+function isPalindrome(str) {
+  if (typeof str !== 'string') return false
+  // 将传入的字符串,统一转化为小写,同时去除非字母和数字,在转换为数组
+  const strArr = str.toLowerCase().replace(/[^a-z0-9]/g, '').split('')
+  let i = 0
+  let j = strArr.length - 1
+  // 循环比较元素
+  while (i < j) {
+    // 从首尾开始, 一一比较元素是否相等
+    if (strArr[i] === strArr[j]) {
+      // 若相等,即第二个元素和倒数第二个元素继续比较,依次类推
+      i += 1
+      j -= 1
+    } else {
+      // 只要有一个相对位置上不相等,既不是回文串
+      return false
+    }
+  }
+  return true
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法中 while 循环最多执行 $ n/2 $ 次，因此时间复杂度为 $ O(n) $。
+
+- 空间复杂度：$ O(n) $
+  该算法使用了长度为 $ n $ 的数组，因此空间复杂度为 $ O(n) $。
+
+### 解法二：利用数组的 reverse 方法
+
+思路：先移除字符串中的非字母和数字，然后利用数组的 reverse 方法将字符串翻转，再和原字符串进行比较，即可得到结果。
+
+```js
+/**
+ * 验证回文串
+ * @param {string} str 需要判断的字符串
+ * @return {boolean} 是否为回文串
+ */
+function isPalindrome(str) {
+  if (typeof str !== 'string') return false
+  // 将传入的字符串,统一转化为小写,同时去除非字母和数字,在转换为数组
+  const strArr = str.toLowerCase().replace(/[^a-z0-9]/g, '').split('')
+  // 将2个字符进行比较得出结果
+  return strArr.join('') === strArr.reverse().join('')
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法中所用的 js 方法的时间复杂度都为 $ O(n) $，且都在独立的循环中执行，因此，总的时间复杂度依然为 $ O(n) $。
+
+- 空间复杂度：$ O(n) $
+  该算法使用了长度为 $ n $ 的数组，因此空间复杂度为 $ O(n) $。
