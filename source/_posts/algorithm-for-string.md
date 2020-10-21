@@ -443,10 +443,12 @@ function longestPalindrome(str) {
     }
     return right - left - 1
   }
-  for (let i = 0; i < s.length; i++) {
+  let start = 0
+  let end = 0
+  for (let i = 0; i < str.length; i++) {
     // 中心的两种选取（奇对称和偶对称）
-    const len1 = expandFromCenter(s, i, i)
-    const len2 = expandFromCenter(s, i, i + 1)
+    const len1 = expandFromCenter(str, i, i)
+    const len2 = expandFromCenter(str, i, i + 1)
     // 两种组合取最大的回文子串长度
     const len = Math.max(len1, len2)
     // 如果此位置为中心的回文数长度大于之前的长度，则进行处理
