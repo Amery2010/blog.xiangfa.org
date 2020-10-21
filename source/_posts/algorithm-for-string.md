@@ -28,6 +28,8 @@ categories: ['算法学习笔记']
 
 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 $ \begin{bmatrix} -2^{31}, 2^{31} - 1 \end{bmatrix} $。请根据这个假设，如果反转后整数溢出那么就返回 0。
 
+详解：[LeetCode 整数反转](https://leetcode-cn.com/problems/reverse-integer/solution/zheng-shu-fan-zhuan-by-leetcode/)
+
 ### 解法一：利用数组的 reverse 方法
 
 思路：在 JavaScript 中数组有一个 reverse 方法，该方法是将数组元素进行翻转。既然数组有翻转的方法，那么我们能不能想办法将数字转换成数组呢？目前虽然没有直接将数字转换成数组的方法，但我们可以考虑先将数字变成字符串，然后将字符串数值转换数组，利用数组的 reverse 方法翻转数组后，将转换回数字。
@@ -112,6 +114,8 @@ function reverseInteger(num) {
     示例 2:
     输入: s = "rat", t = "car"
     输出: false
+
+详解：[LeetCode 有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode/)
 
 ### 解法一：利用数组的 sort 方法
 
@@ -198,6 +202,8 @@ function isAnagram(source, target) {
     s = "loveleetcode",
     返回 2.
 
+详解：[LeetCode 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/solution/zi-fu-chuan-zhong-de-di-yi-ge-wei-yi-zi-fu-by-leet/)
+
 ### 解法一：利用 js 自带方法求解
 
 思路：如果字符串某个字符的正向索引值和反向索引值相同，则表示该字符只出现了一次。
@@ -273,6 +279,8 @@ function firstUniqChar(str) {
     输入: "race a car"
     输出: false
 
+详解：[LeetCode 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/solution/yan-zheng-hui-wen-chuan-by-leetcode-solution/)
+
 ### 解法一：字符串遍历
 
 思路：先移除字符串中的非字母和数字，再将字符串转换为数组，再对数组首尾一一比较，即可得出结果。
@@ -339,3 +347,122 @@ function isPalindrome(str) {
 
 - 空间复杂度：$ O(n) $
   该算法使用了长度为 $ n $ 的数组，因此空间复杂度为 $ O(n) $。
+
+
+## 最长回文子串
+
+> 给定一个字符串 str，找到 str 中最长的回文子串。你可以假设 str 的最大长度为 1000。
+
+    示例
+    输入: "babad"
+    输出: "bab"
+    注意: "aba" 也是一个有效答案。
+
+详解：[LeetCode 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/)
+
+### 解法一：动态规划法
+
+动态规划的思想，是希望把问题划分成相关联的子问题；然后从最基本的子问题出发来推导较大的子问题，直到所有的子问题都解决。  
+根据字符串的长度，建立一个矩阵 dp, 通过不同情况的判断条件，通过 `dp[i][j]` 表示 `s[i]` 至 `s[j]` 所代表的子串是否是回文子串。
+
+```js
+/**
+ * 获得最长回文子串
+ * @param {string} str 需要判断的字符串
+ * @return {string} 最长回文串
+ */
+function longestPalindrome(str) {
+  if (typeof str !== 'string') return ''
+  const dp = []
+  for (let i = 0; i < str.length; i++) {
+    dp[i] = []
+  }
+  let max = -1
+  let result = ''
+  for (let l = 0; l < str.length; l++) {
+    // l为所遍历的子串长度 -1，即左下标到右下标的长度
+    for (let i = 0; i + l < str.length; i++) {
+      const j = i + l
+      // i为子串开始的左下标，j为子串开始的右下标
+      if (l === 0) {
+        // 当子串长度为1时，必定是回文子串
+        dp[i][j] = true
+      } else if (l <= 2) {
+        // 长度为2或3时，首尾字符相同则是回文子串
+        if (str[i] === str[j]) {
+          dp[i][j] = true
+        } else {
+          dp[i][j] = false
+        }
+      } else {
+        // 长度大于3时，若首尾字符相同且去掉首尾之后的子串仍为回文，则为回文子串
+        if ((str[i] === str[j]) && dp[i + 1][j - 1]) {
+          dp[i][j] = true
+        } else {
+          dp[i][j] = false
+        }
+      }
+      if (dp[i][j] && l > max) {
+        max = l
+        result = str.substring(i, j + 1)
+      }
+    }
+  }
+  return result
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n^2) $
+  该算法存在两层遍历，因此时间复杂度为 $ O(n^2) $。
+
+- 空间复杂度：$ O(n) $
+  该算法申请了一个长度为 `n` 的数组用于结果存储，因此空间复杂度为 $ O(n) $。
+
+### 解法二：中心扩展
+
+思路：回文子串一定是对称的，所以我们可以每次选择一个中心，然后从中心向两边扩展判断左右字符是否相等。  
+中心点的选取有两种情况：  
+- 当长度为奇数时，以单个字符为中心。
+- 当长度为偶数时，以两个字符之间的空隙为中心。
+
+```js
+/**
+ * 获得最长回文子串
+ * @param {string} str 需要判断的字符串
+ * @return {string} 最长回文串
+ */
+function longestPalindrome(str) {
+  if (typeof str !== 'string') return ''
+  if (str.length < 1) return ''
+  const expandFromCenter = (str, left, right) => {
+    while (left >= 0 && right < str.length && str[left] === str[right]) {
+      left -= 1
+      right += 1
+    }
+    return right - left - 1
+  }
+  for (let i = 0; i < s.length; i++) {
+    // 中心的两种选取（奇对称和偶对称）
+    const len1 = expandFromCenter(s, i, i)
+    const len2 = expandFromCenter(s, i, i + 1)
+    // 两种组合取最大的回文子串长度
+    const len = Math.max(len1, len2)
+    // 如果此位置为中心的回文数长度大于之前的长度，则进行处理
+    if (len > end - start) {
+      start = i - Math.floor((len - 1) / 2)
+      end = i + Math.floor(len / 2)
+    }
+  }
+  return str.substring(start, end + 1)
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n^2) $
+  该算法存在两层循环嵌套，因此遍历的最大次数为 $ n^2 $。
+
+- 空间复杂度：$ O(1) $
+  该算法只使用了常量，因此空间复杂度为 $ O(1) $。
