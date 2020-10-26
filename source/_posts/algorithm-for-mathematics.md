@@ -37,7 +37,7 @@ categories: ['算法学习笔记']
 
 详解：[LeetCode 罗马数字转整数](https://leetcode-cn.com/problems/roman-to-integer/solution/yong-shi-9993nei-cun-9873jian-dan-jie-fa-by-donesp/)
 
-### 解法一：遍历
+### 解法一：模拟法
 
 思路：罗马数字的特殊值组合主要有 IV、VI、IX、XI 等，对于 IV，如果用右边的值减去左边的值可以得到 `5 - 1 = 4`，而对于 VI，如果使用右边的值加上左边的值可以得到 `5 + 1 = 6`。因此我们在遍历过程中每次取前后两个值，就可以得到如果左侧的值小于右侧的值，则使用大值减小值，如果左边的值大于右边的值，则大值加小值的方案。
 
@@ -87,3 +87,141 @@ function romanToInteger(str) {
 
 - 空间复杂度：$ O(1) $
   该算法只使用了一些常规值，因此空间复杂度为 $ O(1) $。
+
+
+### 解法二：特殊值合并运算
+
+思路：罗马数字的特殊逻辑中，除了 IV、IX、XL、XC、CD 和 CM 不符合累加原则以外，其他位数的数组都可以使用累加的形式进行取值。如果我们将特殊值作为一个“整体”来看待，这些特殊值也可以等于具体的值，即依然可以采用累加的原则。
+
+```js
+/**
+ * 罗马数字转整数
+ * @param {string} str 需要转换的罗马数字
+ * @return {number} 转换后的整数
+ */
+function romanToInteger(str) {
+  // 异常值处理
+  if (typeof str !== 'string') return NaN
+  const getValue = char => {
+    switch (char) {
+      case 'I': return 1
+      case 'V': return 5
+      case 'X': return 10
+      case 'L': return 50
+      case 'C': return 100
+      case 'D': return 500
+      case 'M': return 1000
+      case 'IV': return 4
+      case 'IX': return 9
+      case 'XL': return 40
+      case 'XC': return 90
+      case 'CD': return 400
+      case 'CM': return 900
+      default: return 0
+    }
+  }
+  const specChars = ['IV', 'IX', 'XL', 'XC', 'CD', 'CM']
+  let sum = 0
+  let i = 0
+  while (i < str.length) {
+    if (str.charAt(i + 1) !== ''
+      && specChars.indexOf(str.charAt(i) + str.charAt(i + 1)) !== -1) {
+      sum += getValue(str.charAt(i) + str.charAt(i + 1))
+      i += 2
+    } else {
+      sum += getValue(str.charAt(i))
+      i += 1
+    }
+  }
+  return sum
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法只使用了一次遍历，因此时间复杂度为 $ O(n) $。
+
+- 空间复杂度：$ O(1) $
+  该算法只使用了一些常规值，因此空间复杂度为 $ O(1) $。
+
+
+## Fizz Buzz
+
+> 写一个程序，输出从 1 到 n 数字的字符串表示。
+> 1.如果 n 是 3 的倍数，输出“Fizz”；
+> 2.如果 n 是 5 的倍数，输出“Buzz”；
+> 3.如果 n 同时是 3 和 5 的倍数，输出 “FizzBuzz”。
+
+    示例
+    n = 15
+    返回:
+    12Fizz4BuzzFizz78FizzBuzz11Fizz1314FizzBuzz
+  
+详解：[LeetCode 罗马数字转整数](https://leetcode-cn.com/problems/fizz-buzz/solution/fizz-buzz-by-leetcode/)
+
+### 解法一：模拟法
+
+思路：只需要判断 1 - n 的每个数字是否能被 3、5、15 整除，输出对应的字符串即可。
+
+```js
+/**
+ * Fizz Buzz
+ * @param {number} n 数字
+ * @return {string} 结果字符串
+ */
+function fizzBuzz(n) {
+  // 异常值处理
+  if (typeof n !== 'number') return ''
+  let result = ''
+  for (let i = 1; i <= n; i++) {
+    if (i % 15 === 0) { // 被15整除
+      result += 'FizzBuzz'
+    } else if (i % 3 === 0) { // 被3整除
+      result += 'Fizz'
+    } else if (i % 5 === 0) { // 被5整除
+      result += 'Buzz'
+    } else {
+      result += i.toString()
+    }
+  }
+  return result
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法使用了一次数据遍历，循环次数依赖于数字 n，因此时间复杂度为 $ O(n) $。
+
+- 空间复杂度：$ O(1) $
+  该算法只使用了常规变量，因此时间复杂度为 $ O(1) $。
+
+
+### 解法二：数组转对象
+
+思路：将数据存储进数组，然后利用数组的 `Array.join()` 方法转换成字符串。
+
+```js
+/**
+ * Fizz Buzz
+ * @param {number} n 数字
+ * @return {string} 结果字符串
+ */
+function fizzBuzz(n) {
+  // 异常值处理
+  if (typeof n !== 'number') return ''
+  return Array.from(
+    new Array(n),
+    (t, i) => (t = (++i % 3 ? '' : 'Fizz') + (i % 5 ? '' : 'Buzz')) ? t : '' + i
+  ).join('')
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法使用了 Array.from 的数组变量函数，因此时间复杂度为 $ O(n) $。
+
+- 空间复杂度：$ O(n) $
+  该算法中临时创建了长度为 `n` 的数组，因此空间复杂度为 $ O(n) $。
