@@ -225,3 +225,87 @@ function fizzBuzz(n) {
 
 - 空间复杂度：$ O(n) $
   该算法中临时创建了长度为 `n` 的数组，因此空间复杂度为 $ O(n) $。
+
+
+## 计数质数
+
+> 统计所有小于非负整数 n 的质数的数量。其中 $ 0 <= n <= 5 * 10^6 $
+
+    示例
+    输入: 10
+    输出: 4
+    解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
+
+详解：[LeetCode 计数质数](https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/)
+
+### 解法一：暴力求解
+
+思路：求质数最简单的方案就是暴力求解，即穷举遍历。
+
+```js
+/**
+ * 计数质数
+ * @param {number} n 数字
+ * @return {number} 质数数量
+ */
+function countPrimes(n) {
+  // 异常值处理
+  if (typeof n !== 'number') return 0
+  let count = 0
+  for (let i = 2; i < n; i++) {
+    let sign = true
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        sign = false
+        break
+      }
+    }
+    if (sign) count++
+  }
+  return count
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n^2) $
+  该算法使用了两次遍历，时间复杂度为 $ O(n^2) $。
+
+- 空间复杂度：$ O(1) $
+  该算法只使用了常规的变量，因此空间复杂度为 $ O(1) $。
+
+
+### 解法二：埃拉托斯特尼筛法
+
+思路：从 2 开始，将每个质数的各个倍数，标记成合数。一个质数的各个倍数，是一个差为此质数本身的等差数列。此为这个筛法和试除法不同的关键之处，后者是以质数来测试每个待测数能否被整除。
+
+```js
+/**
+ * 计数质数
+ * @param {number} n 数字
+ * @return {number} 质数数量
+ */
+function countPrimes(n) {
+  // 异常值处理
+  if (typeof n !== 'number') return 0
+  const arr = new Array(n)
+  let count = 0
+  for (let i = 2; i < n; i++) {
+    if (!arr[i - 1]) {
+      count++
+      for (let j = i * i; j <= n; j += i) {
+        arr[j - 1] = true
+      }
+    }
+  }
+  return count
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(nlog(log(n))) $
+  对每一个 $ i $，要划掉 $ n/i $ 个数, 要进行 $ n/i $ 次运算，全部加起来，就是 $ n $ (从 1 到 $ \sqrt[]{n} $ 之间的 $ 1/i $ 之和)，简单讲就是 (从 1 到 $ n $ 之间的 $ 1/i $ 之和) 约等于 $ log $ (对所有 $ k $ 从 1 到 $ n $ 之间的 $ 1/k $ 之和)，后者是 $ log(n) $，所以前者就是 $ log(log(n)) $；最外层需要判断 $ n $ 次 ；所以最终时间复杂度为 $ O(nlog(log(n))) $。
+
+- 空间复杂度：$ O(n) $
+  该算法申请了一个长度为 n 的数组，因此空间复杂度为 $ O(n) $。
