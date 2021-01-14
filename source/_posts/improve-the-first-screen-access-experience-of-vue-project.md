@@ -32,7 +32,7 @@ categories: ['Vue']
 ```html
 <div id="app">
   <div style="padding-top: 30vh; text-align: center">
-    <div style="width: 60vw;">
+    <div style="margin: auto">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; display: block;"
       width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
         <g transform="translate(20 50)">
