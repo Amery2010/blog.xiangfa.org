@@ -64,13 +64,10 @@ const { override, overrideDevServer } = require('customize-cra')
 // 适配 qiankun 微前端逻辑
 const adaptMicroApp = () => {
   return (config) => {
-    /**
-     * 根据 qiankun 文档配置，官方文档里使用的是 `${pkg.name}-[name]` 的形式，
-     * 但我个人觉得这个形式更像是一种笔误...直接使用 `pkg.name` 并不会影响实际效果。
-     */
-    config.output.library = pkg.name
+    // 也可以不使用 pkg.name，手动定义
+    config.output.library = `${pkg.name}_[name]`
     config.output.libraryTarget = 'umd'
-    config.output.jsonpFunction = `webpackJsonp_${pkg.name}`
+    config.output.jsonpFunction = `webpackJsonp_${pkg.name}_[name]`
     config.output.globalObject = 'window'
     return config
   }
