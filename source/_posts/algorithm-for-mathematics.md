@@ -394,3 +394,90 @@ function isPowerOfThree(n) {
 
 - 空间复杂度：$ O(1) $
   该算法未使用额外的内存空间，因此空间复杂度为 $ O(1) $。
+
+
+## Excel 表列序号
+
+> 给定一个 Excel 表格中的列名称，返回其相应的列序号。
+
+    示例
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28
+    输入: "A",
+    输出: 1
+    输入: "AB",
+    输出: 28
+
+详解：[LeetCode Excel 表列序号](https://leetcode-cn.com/problems/excel-sheet-column-number/solution/hua-jie-suan-fa-171-excelbiao-lie-xu-hao-by-guanpe/)
+
+### 解法一：26进制计算法
+
+思路：由于 Excel 表序列号只包含 [A-Z] 26个字符，且 A = 1，B = 2...我们可以将其看成是一种特殊的 26进制数，因此这道题也就变成了让你将 26进制数转 10进制数。
+
+```js
+/**
+ * Excel 表列序号
+ * @param {string} str 表序列号
+ * @return {number} 当前为第几列
+ */
+function titleToNumber(str) {
+  // 异常值处理
+  if (typeof str !== 'string') return -1
+  let sum = 0
+  let i = str.length - 1
+  let carry = 1
+  while (i >= 0) {
+    // A 的 charCode 等于 64
+    sum += (str[i].charCodeAt() - 64) * carry
+    carry *= 26
+    i--
+  }
+  return sum
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法只使用了一次遍历操作，因此时间复杂度为 $ O(n) $。
+
+- 空间复杂度：$ O(1) $
+  该算法中临时变量的个数与循环次数无关，因此空间复杂度为 $ O(1) $。
+
+### 解法二：利用 Hash 表快速转换
+
+思路：直接利用 Hash 表的方式，快速获取字母对应的值，并按照位数进行累加，即 26进制转 10进制。
+
+```js
+/**
+ * Excel 表列序号
+ * @param {string} str 表序列号
+ * @return {number} 当前为第几列
+ */
+function titleToNumber(str) {
+  // 异常值处理
+  if (typeof str !== 'string') return -1
+  const arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+              'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  let sum = 0
+  const length = str.length
+  for (let i = 0; i < length; i++) {
+    sum = (arr.indexOf(str[i]) + 1) * Math.pow(26, length - 1 - i) + sum
+  }
+  return sum
+}
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$ O(n) $
+  该算法只使用了一次遍历操作，因此时间复杂度为 $ O(n) $。
+
+- 空间复杂度：$ O(1) $
+  该算法中临时变量的个数与循环次数无关，因此空间复杂度为 $ O(1) $。
