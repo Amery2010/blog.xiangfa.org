@@ -209,5 +209,5 @@ Let hexo support LaTeX formulas.
   # Mathjax
   mathjax:
   enable: true
-  cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   ```

@@ -44,7 +44,7 @@ categories: ['Hexo']
 # MathJax Support
 mathjax:
   enable: true
-  cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 ```
 
 3、修改 `themes/YourThemeName/layout/post.ejs` 文件，在中间添加：
